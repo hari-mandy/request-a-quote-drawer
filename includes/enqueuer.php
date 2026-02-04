@@ -1,12 +1,12 @@
 <?php
 
-namespace Clarifi\Calculator;
+namespace Mandy\QuoteDrawer;
 
 if (! defined('ABSPATH')) {
 	exit;
 }
 
-if (! class_exists('\Clarifi\Calculator\Enqueuer')) {
+if (! class_exists('\Mandy\QuoteDrawer\Enqueuer')) {
 
 	class Enqueuer {
 
@@ -81,5 +81,5 @@ if (! class_exists('\Clarifi\Calculator\Enqueuer')) {
 	}
 
 	// Register hooks
-	add_action('init', ['\\Clarifi\\Calculator\\Enqueuer', 'setup']);
+	add_action('init', ['\\Mandy\\QuoteDrawer\\Enqueuer', 'setup']);
 }

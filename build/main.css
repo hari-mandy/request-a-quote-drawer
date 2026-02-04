@@ -72,4 +72,33 @@
   transform: translateX(0);
 }
 
+/* Loading Indicators */
+.afrfqbt.loading,
+.afrfqbt.loading-indicator {
+  pointer-events: none;
+  opacity: 0.6;
+  position: relative;
+}
+
+.afrfqbt.loading::after,
+.afrfqbt.loading-indicator::after {
+  content: "";
+  width: 16px;
+  height: 16px;
+  border: 2px solid #ccc;
+  border-top-color: #000;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: rfq-spin 0.6s linear infinite;
+}
+
+@keyframes rfq-spin {
+  to {
+    transform: rotate(360deg) translate(-50%, -50%);
+  }
+}
+
 /*# sourceMappingURL=main.css.map*/

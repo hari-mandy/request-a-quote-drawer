@@ -68,9 +68,12 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./main.scss */ "./src/main.scss");
 
+let activeQuoteButton = null; // clicked button to show indicator.
 
 // Function to reload the quote drawer content.
 function reloadQuoteDrawer() {
+  const addedToQuote = document.querySelector('.added_to_quote');
+  if (addedToQuote) addedToQuote.remove();
   fetch(window.location.href).then(res => res.text()).then(html => {
     const doc = new DOMParser().parseFromString(html, 'text/html');
     const newContent = doc.querySelector('#quote-drawer > *');
@@ -80,8 +83,22 @@ function reloadQuoteDrawer() {
       drawer.classList.add('is-open');
       document.body.style.overflow = 'hidden';
     }
+  }).finally(() => {
+    // Always remove loading state
+    if (activeQuoteButton) {
+      activeQuoteButton.classList.remove('loading-indicator');
+      activeQuoteButton = null;
+    }
   });
 }
+
+// Add loading indicator class for the clicked button.
+document.addEventListener('click', function (e) {
+  const btn = e.target.closest('.afrfqbt, .remove_from_quote_button, #afrfq_update_quote_btn');
+  if (!btn) return;
+  activeQuoteButton = btn;
+  btn.classList.add('loading-indicator');
+});
 
 // Wait for AJAX to finish.
 jQuery(document).ajaxComplete(function (event, xhr, settings) {
