@@ -12,7 +12,7 @@ namespace Mandy\QuoteDrawer;
  * Author URI:        https://mandytechnologies.com
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       clairfi-calculator
+ * Text Domain:       request-a-quote-drawer
  * Requires Plugins:  woocommerce-request-a-quote
  */
 
@@ -35,7 +35,11 @@ class Quote_Drawer_Initial {
 			<div class="qd-panel">
 				<button class="qd-close"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg></button>
 				<h2>Your Quote</h2>
-				<div id="qd-content"><?php Quote_Drawer::html_structure(); ?><a href="/request-a-quote" class="wc-block-components-button wp-element-button">Go to Quote Page</a></div>
+				<div class="woocommerce-notices-wrapper"></div>
+				<div id="qd-content"><?php Quote_Drawer::html_structure(); ?>
+					<a href="/request-a-quote" class="wc-block-components-button wp-element-button">Go to Quote Page</a>
+					<a href="/shop" class="wc-block-components-button wp-element-button">Continue Shopping</a>
+				</div>
 			</div>
 		</div>
 		<?php

@@ -45,7 +45,7 @@ jQuery(document).ajaxComplete(function (event, xhr, settings) {
 	if (
 		settings.data.includes('add_to_quote') ||
 		settings.data.includes('remove_quote_item') ||
-		settings.data.includes('update_quote')
+		settings.data.includes('update_quote_item')
 	) {
 		reloadQuoteDrawer();
 	}
@@ -64,7 +64,7 @@ document.addEventListener('click', function (e) {
 });
 
 document.addEventListener('click', function (e) {
-	const openMiniQuote = e.target.closest('.view-mini-quote-btn a');
+	const openMiniQuote = e.target.closest('.view-mini-quote-btn');
 	if (!openMiniQuote) return;
 
 	const drawer = document.getElementById('quote-drawer');
