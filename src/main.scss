@@ -109,6 +109,36 @@ ul.shop_table {
 
 @keyframes rfq-spin {
 	to {
-		transform: rotate(360deg) translate(-50%, -50%);
+		transform: rotate(360deg);
 	}
+}
+
+.qd-panel {
+	position: relative; // required for overlay
+}
+
+/* Overlay */
+.quote-drawer-loading-overlay {
+	display: none;
+	position: absolute;
+	inset: 0;
+	background: rgba(95, 95, 95, 0.35);
+	z-index: 20;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Active state */
+.quote-drawer-loading-overlay.is-active {
+	display: flex;
+}
+
+/* Spinner */
+.loading-icon {
+	width: 40px;
+	height: 40px;
+	border: 3px solid #ddd;
+	border-top-color: #000;
+	border-radius: 50%;
+	animation: rfq-spin 0.8s linear infinite;
 }

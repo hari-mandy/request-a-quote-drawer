@@ -1,12 +1,12 @@
 <?php
 
-namespace Mandy\QuoteDrawer;
+namespace Vital\QuoteDrawer;
 
 if (! defined('ABSPATH')) {
 	exit;
 }
 
-if (! class_exists('\Mandy\QuoteDrawer\Quote_Drawer')) {
+if (! class_exists('\Vital\QuoteDrawer\Quote_Drawer')) {
 
 	class Quote_Drawer {
 

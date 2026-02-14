@@ -1,12 +1,12 @@
 <?php
 
-namespace Mandy\QuoteDrawer;
+namespace Vital\QuoteDrawer;
 
 if (! defined('ABSPATH')) {
 	exit;
 }
 
-if (! class_exists('\Mandy\QuoteDrawer\Enqueuer')) {
+if (! class_exists('\Vital\QuoteDrawer\Enqueuer')) {
 
 	class Enqueuer {
 
@@ -81,5 +81,5 @@ if (! class_exists('\Mandy\QuoteDrawer\Enqueuer')) {
 	}
 
 	// Register hooks
-	add_action('init', ['\\Mandy\\QuoteDrawer\\Enqueuer', 'setup']);
+	add_action('init', ['\\Vital\\QuoteDrawer\\Enqueuer', 'setup']);
 }

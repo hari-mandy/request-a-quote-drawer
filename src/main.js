@@ -1,7 +1,5 @@
 import './main.scss';
 
-let activeQuoteButton = null; // clicked button to show indicator.
-
 // Function to reload the quote drawer content.
 function reloadQuoteDrawer() {
 	const addedToQuote = document.querySelector('.added_to_quote');
@@ -16,26 +14,33 @@ function reloadQuoteDrawer() {
 
 			if (newContent && drawer) {
 				drawer.innerHTML = newContent.parentElement.innerHTML;
-				drawer.classList.add('is-open');
 				document.body.style.overflow = 'hidden';
 			}
 		})
 		.finally(() => {
-			// Always remove loading state
-			if (activeQuoteButton) {
-				activeQuoteButton.classList.remove('loading-indicator');
-				activeQuoteButton = null;
-			}
+			// to add the loader indication
+			const loading = document.querySelector('.quote-drawer-loading-overlay');
+			loading.style.display = "none";
+
 		});
+
+		//To remove the default woocommerce notice in product page.
+		const wooCommerceNotice = document.querySelectorAll('.woocommerce-notices-wrapper');
+		if (wooCommerceNotice.length > 1) {
+			wooCommerceNotice[0].remove();
+		}
 }
 
-// Add loading indicator class for the clicked button.
+// Add loading indicator class for the quote drawer.
 document.addEventListener('click', function (e) {
-	const btn = e.target.closest('.afrfqbt, .remove_from_quote_button, #afrfq_update_quote_btn');
+	const btn = e.target.closest('.afrfqbt, .remove_from_quote_button, #afrfq_update_quote_btn, .afrfqbt_single_page');
 	if (!btn) return;
 
-	activeQuoteButton = btn;
-	btn.classList.add('loading-indicator');
+	const drawer = document.querySelector('#quote-drawer');
+	drawer.classList.add('is-open');
+
+	const loading = document.querySelector('.quote-drawer-loading-overlay');
+	loading.style.display = "flex";
 });
 
 // Wait for AJAX to finish.
@@ -50,6 +55,8 @@ jQuery(document).ajaxComplete(function (event, xhr, settings) {
 		reloadQuoteDrawer();
 	}
 });
+
+
 
 // Close drawer
 document.addEventListener('click', function (e) {
